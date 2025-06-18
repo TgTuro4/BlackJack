@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BlackJack</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app" class="casino-theme">
+    <header class="toolbar">
+      <h1>Turo's BlackJack Table</h1>
+      <div class="toolbar-buttons">
+        <button id="theme-toggle" aria-label="Toggle Theme">🌓</button>
+        <button id="leaderboard-btn" aria-label="Leaderboard">📜</button>
+        <button id="achievements-btn" aria-label="Achievements">🏆</button>
+        <button id="add-player-btn" aria-label="Add Player">➕</button>
+        <button id="practice-btn" aria-label="1v1 AI">🤖</button>
+      </div>
+    </header>
+    <main class="table">
+      <section class="dealer-area">
+        <h2>Dealer <span id="dealer-total" class="hand-total">0</span></h2>
+        <div id="dealer-hand" class="hand" aria-label="Dealer hand"></div>
+        <div id="deck-pile" class="deck-pile"><div class="card-back">🂠</div></div>
+      </section>
+      <section id="players-area" class="players-area"></section>
+      <section class="hud">
+        <div id="bankroll" class="hud-item" aria-live="polite">Bankroll: 1000</div>
+        <div id="bet-display" class="hud-item">Bet: 0</div>
+        <div id="timer" class="hud-item" aria-label="Action timer" style="position:relative; width:60px; height:60px;">
+          <svg height="60" width="60">
+            <circle cx="30" cy="30" r="26" stroke-width="4" stroke="var(--timer-track)" fill="none" />
+            <circle id="timer-ring" cx="30" cy="30" r="26" stroke-width="4" stroke="var(--timer-ring)" fill="none" stroke-dasharray="163.36281798666926" stroke-dashoffset="0" />
+          </svg>
+          <span id="timer-text" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:0.9rem;">15</span>
+        </div>
+
+      </section>
+      <section id="chip-tray" class="chip-tray" aria-label="Chip tray"></section>
+      <section class="controls">
+        <button id="hit-btn" disabled>Hit</button>
+        <button id="stand-btn" disabled>Stand</button>
+        <button id="double-btn" disabled>Double</button>
+        <button id="deal-btn">Deal</button>
+        <button id="next-round-btn" class="hidden">Next Round</button>
+      </section>
+    </main>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+      <!-- Result Modal -->
+      <div id="result-modal" class="modal hidden">
+        <div class="modal-content">
+          <button class="close-btn" aria-label="Close">&times;</button>
+          <h2 id="result-message"></h2>
+          <div class="result-scores">
+            <p>Your Score: <b id="result-player-score"></b></p>
+            <p>Dealer's Score: <b id="result-dealer-score"></b></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Leaderboard Modal -->
+      <div id="leaderboard-modal" class="modal hidden">
+        <div class="modal-content">
+          <button class="close-btn" aria-label="Close">&times;</button>
+          <h2>Leaderboard</h2>
+          <div id="leaderboard-list"></div>
+          <button id="reset-leaderboard-btn" class="btn-danger">Reset</button>
+        </div>
+      </div>
+
+      <!-- Achievements Modal -->
+      <div id="achievements-modal" class="modal hidden">
+        <div class="modal-content">
+          <button class="close-btn" aria-label="Close">&times;</button>
+          <h2>Achievements</h2>
+          <div id="achievements-list" class="achievements-list"></div>
+            <button id="reset-achievements-btn" class="small-btn">Reset Achievements</button>
+        </div>
+      </div>
+  </div>
+  <script src="main.js" defer></script>
+</body>
+</html>
